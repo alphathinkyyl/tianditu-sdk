@@ -1,0 +1,21 @@
+{
+  "name": "alphathinkyyl/tianditu-sdk",
+  "description": "A Laravel SDK for Tianditu API",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "YourVendor\\Tianditu\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "alphathinkyyl\\Tianditu\\TiandituServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.0"
+  }
+}
