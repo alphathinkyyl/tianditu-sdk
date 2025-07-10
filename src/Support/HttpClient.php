@@ -20,9 +20,11 @@ class HttpClient
     protected $baseUrl = 'https://api.tianditu.gov.cn';
     public $apiKey;
 
-    public function __construct(string $apiKey)
+    public function __construct(array $config)
     {
-        $this->client = new Client(['base_uri' => $this->baseUrl]);
+        $url=$config['base_url'];
+        $apiKey = $config['api_key'] ?? '';
+        $this->client = new Client(['base_uri' => $url]);
         $this->apiKey = $apiKey;
     }
 
