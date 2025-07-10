@@ -4,18 +4,21 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "YourVendor\\Tianditu\\": "src/"
+      "Alphathinkyyl\\Tianditu\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "alphathinkyyl\\Tianditu\\TiandituServiceProvider"
+        "Alphathinkyyl\\Tianditu\\TiandituServiceProvider"
       ]
     }
   },
   "require": {
     "php": ">=7.4",
     "guzzlehttp/guzzle": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
   }
 }
