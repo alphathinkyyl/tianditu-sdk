@@ -7,7 +7,7 @@ Laravel SDK for Tianditu API
 1. 安装 SDK 包
 
 ```bash
-composer require yourname/tianditu-sdk
+composer require alphathinkyyl/tianditu-sdk
 ```
 
 2. 发布配置文件：
