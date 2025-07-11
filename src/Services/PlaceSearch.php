@@ -3,8 +3,8 @@
 /*
  * @Author: yuyanli 603447409@qq.com
  * @Date: 2025-07-09 14:01:10
- * @LastEditors: yuyanli 603447409@qq.com
- * @LastEditTime: 2025-07-09 16:18:44
+ * @LastEditors: dingtalk_kyfese xiaoyu@zsjq9.wecom.work
+ * @LastEditTime: 2025-07-11 16:37:46
  * @FilePath: Alphathinkyyl\Tianditu\Services\PlaceSearch.php
  * @Description: 地名搜索V2.0
  */
@@ -32,7 +32,7 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchNormal(string $keyword, string $level = 1, string $dataTypes = '', string $show = 1, string $mapBound = "-180,-90,180,90", int $page = 1, int $count = 10)
+    public function searchNormal(string $keyword, string $level = '1', string $dataTypes = '', string $show = '1', string $mapBound = "-180,-90,180,90", int $page = 1, int $count = 10)
     {
         return $this->searchBase([
             'keyWord' => $keyword,
@@ -56,14 +56,14 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchByDistrict(string $keyword, string $specify, string $dataTypes = '', string $show = 1, int $page = 1, int $count)
+    public function searchByDistrict(string $keyword, string $specify, string $dataTypes = '', string $show = '1', int $page = 1, int $count=10)
     {
         return $this->searchBase([
             'keyWord' => $keyword,
             'queryType' => 12,
             'specify' => $specify,
             'start' => $page,
-            'count' => 10,
+            'count' => $count,
             'dataTypes' => $dataTypes,
             'show' => $show
         ]);
@@ -80,7 +80,7 @@ class PlaceSearch
      * @param {*} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchInViewBounds(string $keyword, string $bounds, string $level = 12, string $dataTypes = '', string $show = 1, int $page = 1, $count = 10)
+    public function searchInViewBounds(string $keyword, string $bounds, string $level = '12', string $dataTypes = '', string $show = '1', int $page = 1, $count = 10)
     {
         return $this->searchBase([
             'keyWord' => $keyword,
@@ -105,7 +105,7 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchNearby(string $keyword, string $queryRadius, string $pointLonlat, string $dataTypes = '', string $show = 1, int $page = 1, int $count = 10)
+    public function searchNearby(string $keyword, string $queryRadius, string $pointLonlat, string $dataTypes = '', string $show = '1', int $page = 1, int $count = 10)
     {
         return $this->searchBase([
             'keyWord' => $keyword,
@@ -129,7 +129,7 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchByPolygon($keyword, array $coordinates, string $dataTypes = '', string $show = 1, int $page = 1, int $count = 10)
+    public function searchByPolygon($keyword, array $coordinates, string $dataTypes = '', string $show = '1', int $page = 1, int $count = 10)
     {
         $polygon = implode(',', $coordinates);
         return $this->searchBase([
@@ -154,7 +154,7 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchByCategory(string $specify, string $mapBound, $dataTypes = '', string $show = 1, int $page = 1, int $count = 10)
+    public function searchByCategory(string $specify, string $mapBound, $dataTypes = '', string $show = '1', int $page = 1, int $count = 10)
     {
         return $this->searchBase([
             'queryType' => 13,
@@ -177,7 +177,7 @@ class PlaceSearch
      * @param {int} $count 返回的结果数量（用于分页和缓存）
      * @return {*}
      */
-    public function searchStats(string $keyword, string $specify, $dataTypes = '', string $show = 1, int $page = 1, int $count = 10)
+    public function searchStats(string $keyword, string $specify, $dataTypes = '', string $show = '1', int $page = 1, int $count = 10)
     {
         return $this->searchBase([
             'keyWord' => $keyword,
