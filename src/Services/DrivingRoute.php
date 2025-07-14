@@ -2,8 +2,8 @@
 /*
  * @Author: yuyanli 603447409@qq.com
  * @Date: 2025-07-09 13:52:28
- * @LastEditors: yuyanli 603447409@qq.com
- * @LastEditTime: 2025-07-09 16:57:44
+ * @LastEditors: dingtalk_kyfese xiaoyu@zsjq9.wecom.work
+ * @LastEditTime: 2025-07-14 15:40:37
  * @FilePath: \tianditu-sdk\src\Services\DrivingRoute.php
  * @Description: 驾车规划服务
  */
@@ -29,13 +29,10 @@ class DrivingRoute
      */
     public function route(string $start, string $end, $style = '0')
     {
-        return $this->http->get('/driving', [
-            'postStr' => [
-                'orig' => $start,
-                'dest' => $end,
-                'style' => $style
-            ],
-            'type' => 'search'
+        return $this->searchBase([
+            'orig' => $start,
+            'dest' => $end,
+            'style' => $style
         ]);
     }
 
@@ -49,13 +46,24 @@ class DrivingRoute
      */
     public function routeWithWaypoints(string $start, string $end, array $waypoints, $style = '0')
     {
-        return $this->http->get('/driving', [
-            'postStr' => [
-                'orig' => $start,
-                'dest' => $end,
-                'mid' => implode(';', $waypoints),
-                'style' => $style
-            ],
+        return $this->searchBase([
+            'orig' => $start,
+            'dest' => $end,
+            'mid' => implode(';', $waypoints),
+            'style' => $style
+        ]);
+    }
+
+
+    /**
+     * @description: 基础搜索请求
+     * @param {array} $params 请求参数
+     * @return {*}
+     */
+    protected function searchBase(array $params)
+    {
+        return $this->http->get('/drive', [
+            'postStr' => json_encode($params,JSON_UNESCAPED_UNICODE),
             'type' => 'search'
         ]);
     }

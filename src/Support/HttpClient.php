@@ -3,7 +3,7 @@
  * @Author: yuyanli 603447409@qq.com
  * @Date: 2025-07-09 14:01:10
  * @LastEditors: dingtalk_kyfese xiaoyu@zsjq9.wecom.work
- * @LastEditTime: 2025-07-11 18:04:03
+ * @LastEditTime: 2025-07-14 13:03:16
  * @FilePath: \tianditu-sdk\src\Support\HttpClient.php
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -46,12 +46,6 @@ class HttpClient
 
             if (json_last_error() !== JSON_ERROR_NONE) {
                 throw new TiandituException('返回数据解析失败：' . json_last_error_msg());
-            }
-
-            // 根据天地图返回结构判断是否出错（可自定义）
-            if (isset($data['status']) && $data['status']['infocode'] != 1000) {
-                $msg = $data['msg'] ?? '天地图接口返回错误';
-                throw new TiandituException("天地图返回错误：{$msg}");
             }
             return $data;
         } catch (GuzzleException $e) {
